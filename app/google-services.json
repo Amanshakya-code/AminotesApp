@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "265040399890",
+    "project_id": "aminotes-3cd98",
+    "storage_bucket": "aminotes-3cd98.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:265040399890:android:1d7df51ea5f28bcf8912cb",
+        "android_client_info": {
+          "package_name": "com.example.aminotes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "265040399890-c93elj7ns4og4h4eck3nmdm1snv01986.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALlj2KGUn6DT_kQ96ufdQSU4JrjZvLVVQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "265040399890-c93elj7ns4og4h4eck3nmdm1snv01986.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
