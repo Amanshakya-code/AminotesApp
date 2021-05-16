@@ -16,24 +16,31 @@ class choiceActivity : AppCompatActivity() {
         var yearIntent = intent.getStringExtra(YEAR)
         subjectName.text = subjectNameIntent
 
-        var str = subjectNameIntent
-        if (str != null) {
+        var subjectnameCompress = subjectNameIntent?.let { compress(it) }
+        /*if (str != null) {
             str = str.replace("\\s".toRegex(), "")
-        }
+        }*/
 
         notes.setOnClickListener {
             var intent = Intent(this,PdfActivity::class.java)
-            intent.putExtra(SUBJECTNAME,str)
+            intent.putExtra(SUBJECTNAME,subjectnameCompress)
             intent.putExtra(YEAR,yearIntent)
-            intent.putExtra(NOTESORPAPER,"notes")
+            intent.putExtra(NOTESORPAPER,"Notes")
             startActivity(intent)
         }
         QuestionPapers.setOnClickListener {
             var intent = Intent(this,PdfActivity::class.java)
-            intent.putExtra(SUBJECTNAME,str)
+            intent.putExtra(SUBJECTNAME,subjectnameCompress)
             intent.putExtra(YEAR,yearIntent)
-            intent.putExtra(NOTESORPAPER,"papers")
+            intent.putExtra(NOTESORPAPER,"Question Paper")
             startActivity(intent)
         }
+    }
+    private fun compress(sample:String):String{
+        var compressed = ""
+        if(sample!=null){
+            compressed = sample.replace("\\s".toRegex(), "")
+        }
+        return compressed
     }
 }

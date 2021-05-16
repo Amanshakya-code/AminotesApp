@@ -23,6 +23,7 @@ class PdfActivity : AppCompatActivity() {
     var year:String = ""
     var subjectName = ""
     var notesorpaper = ""
+    var str  = ""
     private lateinit var adapter:PdfAdapter
     private val db: FirebaseDatabase by lazy {
         FirebaseDatabase.getInstance()
@@ -33,6 +34,10 @@ class PdfActivity : AppCompatActivity() {
         subjectName = intent.getStringExtra(SUBJECTNAME).toString()
         year = intent.getStringExtra(YEAR).toString()
         notesorpaper = intent.getStringExtra(NOTESORPAPER).toString()
+        str = notesorpaper
+        if (str != null) {
+            str = str.replace("\\s".toRegex(), "")
+        }
         val actionbar = supportActionBar
         if (actionbar != null) {
             actionbar.setTitle(notesorpaper)
@@ -40,7 +45,7 @@ class PdfActivity : AppCompatActivity() {
         questionPaperRecyclerView.layoutManager = LinearLayoutManager(this)
 
         val baseQuery: Query =
-            db.reference.child("$year/$subjectName/$notesorpaper").child("pdf")
+            db.reference.child("$year/$subjectName/$str").child("pdf")
         val options = FirebaseRecyclerOptions.Builder<fileInfoModel>()
             .setQuery(baseQuery, fileInfoModel::class.java)
             .build()
@@ -49,13 +54,13 @@ class PdfActivity : AppCompatActivity() {
         questionPaperRecyclerView.adapter = adapter
 
     }
-    fun OpenNewTask(view: View){
-        var intent = Intent(this,UploadFile::class.java)
-        intent.putExtra(SUBJECTNAME,subjectName)
-        intent.putExtra(YEAR,year)
-        intent.putExtra(NOTESORPAPER,notesorpaper)
-        startActivity(intent)
-    }
+    fun OpenNewTask(view: View) {
+            var intent = Intent(this, UploadFile::class.java)
+            intent.putExtra(SUBJECTNAME, subjectName)
+            intent.putExtra(YEAR, year)
+            intent.putExtra(NOTESORPAPER, str)
+            startActivity(intent)
+        }
 
     override fun onStart() {
         super.onStart()

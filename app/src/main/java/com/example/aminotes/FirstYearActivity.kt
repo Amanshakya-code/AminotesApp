@@ -17,8 +17,6 @@ class FirstYearActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.first_year)
-
-        //list = mutableListOf<subject>()
         list.add(subject("Applied Mathematics-1",R.drawable.ic_launcher_background,"first"))
         list.add(subject("Applied Mathematics-2",R.drawable.ic_launcher_background,"first"))
         list.add(subject("Engineering Physics",R.drawable.ic_launcher_background,"first"))

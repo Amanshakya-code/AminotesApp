@@ -74,7 +74,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this,ThirdYearActivity::class.java))
         }
         fourthYear.setOnClickListener {
-            Toast.makeText(this,"No data Found :(\nWe will update this in future",Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,"Data Not Found :(\nWe will update this in future",Toast.LENGTH_SHORT).show()
         }
 
     }
