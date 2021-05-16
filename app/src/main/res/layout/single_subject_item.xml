@@ -12,7 +12,7 @@
         android:layout_margin="10dp"
         android:id="@+id/cardview"
         app:cardElevation="4dp"
-        app:cardCornerRadius="6dp">
+        app:cardCornerRadius="50dp">
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="150dp">
@@ -26,18 +26,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/gradient"/>
+
             <TextView
                 android:id="@+id/subjectName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
+                android:layout_marginTop="30dp"
                 android:ellipsize="end"
-                android:padding="10dp"
+                android:fontFamily="@font/oswald_bold"
+                android:gravity="center_horizontal"
                 android:maxLines="3"
+                android:padding="10dp"
                 android:text="Physics"
                 android:textColor="@android:color/white"
                 android:textSize="30sp"
-                android:layout_marginTop="30dp"
                 android:textStyle="bold" />
         </FrameLayout>
     </androidx.cardview.widget.CardView>

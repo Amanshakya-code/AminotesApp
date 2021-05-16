@@ -15,6 +15,7 @@ class choiceActivity : AppCompatActivity() {
         var subjectNameIntent = intent.getStringExtra(SUBJECTNAME)
         var yearIntent = intent.getStringExtra(YEAR)
         subjectName.text = subjectNameIntent
+        val actionbar = supportActionBar
 
         var subjectnameCompress = subjectNameIntent?.let { compress(it) }
         /*if (str != null) {
