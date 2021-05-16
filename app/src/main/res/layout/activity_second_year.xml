@@ -6,10 +6,10 @@
     android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context=".SecondYearActivity">
-    <ListView
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/secondyearactivitylayout"
+        android:id="@+id/secondYearRv"
         tools:listitem="@layout/single_subject_item"
         />
 </LinearLayout>

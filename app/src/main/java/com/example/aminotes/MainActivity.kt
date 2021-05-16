@@ -68,13 +68,13 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this,FirstYearActivity::class.java))
         }
         secondYear.setOnClickListener {
-
+            startActivity(Intent(this,SecondYearActivity::class.java))
         }
         thirdYear.setOnClickListener {
-
+            startActivity(Intent(this,ThirdYearActivity::class.java))
         }
         fourthYear.setOnClickListener {
-
+            Toast.makeText(this,"No data Found :(\nWe will update this in future",Toast.LENGTH_SHORT).show()
         }
 
     }
