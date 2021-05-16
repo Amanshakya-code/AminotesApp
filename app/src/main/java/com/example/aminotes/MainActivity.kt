@@ -1,12 +1,20 @@
 package com.example.aminotes
 
+import android.app.AlertDialog
+import android.app.DownloadManager
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
+import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Environment
+import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
@@ -77,6 +85,33 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this,"Data Not Found :(\nWe will update this in future",Toast.LENGTH_SHORT).show()
         }
 
+    }
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        var inflater = menuInflater
+        inflater.inflate(R.menu.about_us, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.aboutUs -> {
+                val inflater = LayoutInflater.from(this)
+                val view = inflater.inflate(R.layout.alert_dialog,null)
+                val alertDialog = androidx.appcompat.app.AlertDialog.Builder(this)
+                    .setView(view)
+                    .setCancelable(true)
+                    .setPositiveButton("Connect With Me"){dialogInterface,which->
+                        val url = "https://www.linkedin.com/in/amankumar007/"
+                        val uri = Uri.parse(url)
+                        startActivity(Intent(Intent.ACTION_VIEW,uri))
+                        Toast.makeText(this,"For Any App Related Query You Can Reached To Me!!",Toast.LENGTH_LONG).show()
+                    }
+                    .create()
+                alertDialog.show()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
     private fun hasInternetConnection():Boolean {
         val connectivityManager = getApplication().getSystemService(

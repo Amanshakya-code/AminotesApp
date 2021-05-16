@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Aminotes</string>
+    <string name="alertcontent">If you want to get rid of searching aminotes on web browser again and again then this app might help you a lot.</string>
 </resources>
