@@ -50,11 +50,13 @@ class UploadFile : AppCompatActivity() {
     }
 
     private fun uploadFile(filePath: Uri) {
+        uploadpb.visibility = View.VISIBLE
         var reference = storage.reference.child("uploads/$subjectName${System.currentTimeMillis()}.pdf")
         reference.putFile(filePath).addOnSuccessListener {
             reference.downloadUrl.addOnSuccessListener {
                 val filemap = fileInfoModel(editText.text.toString(),it.toString())
                 db.reference.child("$year/$subjectName/$notesorpaper").child("pdf/${System.currentTimeMillis()}").setValue(filemap).addOnSuccessListener {
+                    uploadpb.visibility = View.GONE
                     Toast.makeText(this,"file Uploaded",Toast.LENGTH_SHORT).show()
                     pdfSelectedImage.visibility = View.INVISIBLE
                     cancelButton.visibility = View.INVISIBLE

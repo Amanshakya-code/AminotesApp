@@ -22,6 +22,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_marginLeft="20dp"
+        android:background="@drawable/custom_view"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="20dp"
         android:layout_height="wrap_content"
@@ -32,6 +33,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/custom_view"
         android:id="@+id/secondYear"
         android:text="Second Year"
         android:layout_margin="20dp"
@@ -39,6 +41,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/custom_view"
         android:id="@+id/thirdYear"
         android:text="Third Year"
         android:layout_margin="20dp"
@@ -46,6 +49,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/custom_view"
         android:id="@+id/fourthYear"
         android:text="Fourth Year"
         android:layout_margin="20dp"
