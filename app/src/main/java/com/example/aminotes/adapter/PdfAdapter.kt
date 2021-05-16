@@ -37,7 +37,7 @@ class PdfAdapter(options: FirebaseRecyclerOptions<fileInfoModel>) : FirebaseRecy
       //  holder.bind(model)
        holder.itemView.apply {
            pdfName.text = model.name
-           pdfImage.setOnClickListener {
+           pdfitem.setOnClickListener {
                var intent = Intent(pdfImage.context,ViewPdfFile::class.java)
                intent.putExtra("filename",model.name)
                intent.putExtra("fileurl",model.url)

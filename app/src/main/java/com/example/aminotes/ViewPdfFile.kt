@@ -25,14 +25,14 @@ class ViewPdfFile : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_pdf_file)
-        webView.settings.javaScriptEnabled = true
         filename = intent.getStringExtra("filename").toString()
         fileurl = intent.getStringExtra("fileurl").toString()
         Log.i("urlmodel","${fileurl}")
          var progressDialog = ProgressDialog(this)
         progressDialog.setTitle(filename)
         progressDialog.setMessage("Opening.....!!")
-
+        Toast.makeText(this,"Reload again if takes time...",Toast.LENGTH_SHORT).show()
+        webView.settings.javaScriptEnabled = true
         webView.webViewClient = object : WebViewClient(){
             override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
                 super.onPageStarted(view, url, favicon)
@@ -45,6 +45,7 @@ class ViewPdfFile : AppCompatActivity() {
                 progressDialog.dismiss()
             }
         }
+
         var encodeurl = "";
         try {
             encodeurl = URLEncoder.encode(fileurl, "UTF-8")
@@ -53,9 +54,6 @@ class ViewPdfFile : AppCompatActivity() {
 
         }
         webView.loadUrl("http://docs.google.com/gview?embedded=true&url=" + encodeurl)
-        Log.i("urlmodel","${encodeurl}")
-
-
     }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         var inflater = menuInflater
