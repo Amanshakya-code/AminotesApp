@@ -13,6 +13,7 @@ import android.view.MenuItem
 import android.view.View
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_view_pdf_file.*
 import java.net.URLEncoder
@@ -31,6 +32,7 @@ class ViewPdfFile : AppCompatActivity() {
          var progressDialog = ProgressDialog(this)
         progressDialog.setTitle(filename)
         progressDialog.setMessage("Opening.....!!")
+
         webView.webViewClient = object : WebViewClient(){
             override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
                 super.onPageStarted(view, url, favicon)
@@ -70,7 +72,7 @@ class ViewPdfFile : AppCompatActivity() {
                     .setTitle(filename)
                     .setDescription(filename + "Downloading..")
                     .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
-                    .setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, filename)
+                    .setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, filename+".pdf")
                     .setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI or DownloadManager.Request.NETWORK_MOBILE)
 
                 var dm = getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager

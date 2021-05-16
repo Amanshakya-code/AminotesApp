@@ -7,10 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.aminotes.PdfActivity
-import com.example.aminotes.R
-import com.example.aminotes.SUBJECTNAME
-import com.example.aminotes.YEAR
+import com.example.aminotes.*
 import com.example.aminotes.model.subject
 import com.google.android.material.card.MaterialCardView
 import kotlinx.android.synthetic.main.single_pdf_item.view.*
@@ -35,10 +32,8 @@ class SubjectAdpater(private val list:List<subject>): RecyclerView.Adapter<Subje
         holder.subjectName.text = currentSubject.subjectName
         cardView = holder.cardView
         cardView.setOnClickListener {
-            var intent = Intent(cardView.context,PdfActivity::class.java)
-            var str = currentSubject.subjectName
-            str = str.replace("\\s".toRegex(), "")
-            intent.putExtra(SUBJECTNAME,str)
+            var intent = Intent(cardView.context,choiceActivity::class.java)
+            intent.putExtra(SUBJECTNAME,currentSubject.subjectName)
             intent.putExtra(YEAR,currentSubject.year)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             cardView.context.startActivity(intent)

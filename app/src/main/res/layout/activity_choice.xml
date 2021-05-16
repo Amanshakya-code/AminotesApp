@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    tools:context=".choiceActivity">
+    <TextView
+        android:id="@+id/subjectName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="70dp"
+        android:text="Title"
+        android:textSize="50sp"
+        android:gravity="center_horizontal"
+        android:textStyle="italic|bold" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:text="Notes"
+        android:id="@+id/notes"
+        app:backgroundTint="#3893DC"
+        android:textSize="30sp"
+        app:cornerRadius="50dp"
+        android:textColor="#FFFF"
+        android:layout_width="300dp"
+        android:layout_marginBottom="10dp"
+        android:layout_margin="20dp"
+        android:background="@drawable/custom_button"
+        android:layout_height="150dp"/>
+    <com.google.android.material.button.MaterialButton
+        android:text="Question Papers"
+        android:id="@+id/QuestionPapers"
+        app:backgroundTint="#3893DC"
+        android:background="@drawable/custom_button"
+        android:textSize="30sp"
+        app:cornerRadius="50dp"
+        android:textColor="#FFFF"
+        android:layout_width="300dp"
+        android:layout_height="150dp"/>
+</LinearLayout>

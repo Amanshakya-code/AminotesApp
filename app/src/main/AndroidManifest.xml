@@ -13,23 +13,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Aminotes">
-        <activity android:name=".ViewPdfFile"
+        <activity android:name=".choiceActivity"/>
+        <activity
+            android:name=".ViewPdfFile"
             android:label="Pdf File" />
-        <activity android:name=".UploadFile"
+        <activity
+            android:name=".UploadFile"
             android:label="Upload" />
-        <activity android:name=".PdfActivity"
-            android:label="Question Papers" />
+        <activity
+            android:name=".PdfActivity" />
         <activity android:name=".FourthYearActivity" />
         <activity android:name=".ThirdYearActivity" />
         <activity android:name=".SecondYearActivity" />
-        <activity android:name=".FirstYearActivity"
+        <activity
+            android:name=".FirstYearActivity"
             android:label="Subjects"
-            android:parentActivityName=".MainActivity"
-            />
+            android:parentActivityName=".MainActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

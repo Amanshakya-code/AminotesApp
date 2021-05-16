@@ -18,9 +18,11 @@ import java.time.Year
 
 const val SUBJECTNAME = "subjectname"
 const val YEAR = "year"
+const val NOTESORPAPER ="notesorpaper"
 class PdfActivity : AppCompatActivity() {
     var year:String = ""
     var subjectName = ""
+    var notesorpaper = ""
     private lateinit var adapter:PdfAdapter
     private val db: FirebaseDatabase by lazy {
         FirebaseDatabase.getInstance()
@@ -30,10 +32,15 @@ class PdfActivity : AppCompatActivity() {
         setContentView(R.layout.activity_pdf)
         subjectName = intent.getStringExtra(SUBJECTNAME).toString()
         year = intent.getStringExtra(YEAR).toString()
+        notesorpaper = intent.getStringExtra(NOTESORPAPER).toString()
+        val actionbar = supportActionBar
+        if (actionbar != null) {
+            actionbar.setTitle(notesorpaper)
+        }
         questionPaperRecyclerView.layoutManager = LinearLayoutManager(this)
 
         val baseQuery: Query =
-            db.reference.child("$year/$subjectName").child("pdf")
+            db.reference.child("$year/$subjectName/$notesorpaper").child("pdf")
         val options = FirebaseRecyclerOptions.Builder<fileInfoModel>()
             .setQuery(baseQuery, fileInfoModel::class.java)
             .build()
@@ -46,6 +53,7 @@ class PdfActivity : AppCompatActivity() {
         var intent = Intent(this,UploadFile::class.java)
         intent.putExtra(SUBJECTNAME,subjectName)
         intent.putExtra(YEAR,year)
+        intent.putExtra(NOTESORPAPER,notesorpaper)
         startActivity(intent)
     }
 

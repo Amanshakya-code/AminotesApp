@@ -25,12 +25,13 @@ class UploadFile : AppCompatActivity() {
     }
     private var year = ""
     private var subjectName = ""
+    private var notesorpaper = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_upload_file)
         year = intent.getStringExtra(YEAR).toString()
         subjectName = intent.getStringExtra(SUBJECTNAME).toString()
-
+        notesorpaper = intent.getStringExtra(NOTESORPAPER).toString()
         pdfSelectedImage.visibility = View.INVISIBLE
         cancelButton.visibility = View.INVISIBLE
 
@@ -53,7 +54,7 @@ class UploadFile : AppCompatActivity() {
         reference.putFile(filePath).addOnSuccessListener {
             reference.downloadUrl.addOnSuccessListener {
                 val filemap = fileInfoModel(editText.text.toString(),it.toString())
-                db.reference.child("$year/$subjectName").child("pdf/${System.currentTimeMillis()}").setValue(filemap).addOnSuccessListener {
+                db.reference.child("$year/$subjectName/$notesorpaper").child("pdf/${System.currentTimeMillis()}").setValue(filemap).addOnSuccessListener {
                     Toast.makeText(this,"file Uploaded",Toast.LENGTH_SHORT).show()
                     pdfSelectedImage.visibility = View.INVISIBLE
                     cancelButton.visibility = View.INVISIBLE
