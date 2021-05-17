@@ -16,7 +16,6 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="150dp">
-
             <ImageView
                 android:id="@+id/subjectImage"
                 android:layout_width="match_parent"
@@ -26,7 +25,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/gradient"/>
-
             <TextView
                 android:id="@+id/subjectName"
                 android:layout_width="match_parent"
