@@ -47,8 +47,8 @@ class PdfActivity : AppCompatActivity() {
         questionPaperRecyclerView.layoutManager = LinearLayoutManager(this)
 
         val config = PagedList.Config.Builder()
-                .setPrefetchDistance(1) // number of pages you want initally
-                .setPageSize(2)
+                .setPrefetchDistance(4) // number of pages you want initally
+                .setPageSize(1)
                 .setEnablePlaceholders(false)
                 .build()
         val baseQuery =

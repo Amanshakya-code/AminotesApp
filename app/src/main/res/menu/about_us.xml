@@ -4,4 +4,8 @@
         android:id="@+id/aboutUs"
         android:title="About Us"
         />
+    <item
+        android:id="@+id/UploadFile"
+        android:title="Upload File"
+        />
 </menu>

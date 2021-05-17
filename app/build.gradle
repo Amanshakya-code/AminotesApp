@@ -57,5 +57,7 @@ dependencies {
 
     //Firebase Pagination Library
     implementation 'com.shreyaspatil:FirebaseRecyclerPagination:1.0.1'
+    implementation 'com.google.android:flexbox:2.0.1'
+
 
 }
