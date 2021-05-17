@@ -7,16 +7,21 @@ import android.view.TextureView
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.RecyclerView
 import com.example.aminotes.R
 import com.example.aminotes.ViewPdfFile
 import com.example.aminotes.model.fileInfoModel
 import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
+import com.firebase.ui.database.paging.DatabasePagingOptions
+import com.firebase.ui.database.paging.FirebaseRecyclerPagingAdapter
+import com.firebase.ui.database.paging.LoadingState
 import kotlinx.android.synthetic.main.single_pdf_item.view.*
 import kotlinx.android.synthetic.main.single_subject_item.view.*
 
-class PdfAdapter(options: FirebaseRecyclerOptions<fileInfoModel>) : FirebaseRecyclerAdapter<fileInfoModel, PdfAdapter.pdfViewHolder>(
+class PdfAdapter(options: DatabasePagingOptions<fileInfoModel>) : FirebaseRecyclerPagingAdapter<fileInfoModel, PdfAdapter.pdfViewHolder>(
     options
 ) {
     class pdfViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
@@ -45,6 +50,28 @@ class PdfAdapter(options: FirebaseRecyclerOptions<fileInfoModel>) : FirebaseRecy
                pdfImage.context.startActivity(intent)
            }
        }
+    }
+
+    override fun onLoadingStateChanged(state: LoadingState) {
+        when(state)
+        {
+            LoadingState.LOADING_INITIAL -> {
+                
+            }
+
+            LoadingState.LOADING_MORE -> {
+            }
+
+            LoadingState.LOADED -> {
+            }
+
+            LoadingState.ERROR -> {
+
+            }
+
+            LoadingState.FINISHED -> {
+            }
+        }
     }
 
 }

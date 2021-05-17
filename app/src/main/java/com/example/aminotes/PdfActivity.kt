@@ -5,11 +5,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.paging.PagedList
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.aminotes.adapter.PdfAdapter
 import com.example.aminotes.model.fileInfoModel
 import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
+import com.firebase.ui.database.paging.DatabasePagingOptions
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.Query
 import kotlinx.android.synthetic.main.activity_pdf.*
@@ -44,10 +46,16 @@ class PdfActivity : AppCompatActivity() {
         }
         questionPaperRecyclerView.layoutManager = LinearLayoutManager(this)
 
-        val baseQuery: Query =
+        val config = PagedList.Config.Builder()
+                .setPrefetchDistance(1) // number of pages you want initally
+                .setPageSize(2)
+                .setEnablePlaceholders(false)
+                .build()
+        val baseQuery =
             db.reference.child("$year/$subjectName/$str").child("pdf")
-        val options = FirebaseRecyclerOptions.Builder<fileInfoModel>()
-            .setQuery(baseQuery, fileInfoModel::class.java)
+        val options = DatabasePagingOptions.Builder<fileInfoModel>()
+                .setLifecycleOwner(this)
+            .setQuery(baseQuery,config, fileInfoModel::class.java)
             .build()
         Log.i("datare","$options")
         adapter = PdfAdapter(options)
