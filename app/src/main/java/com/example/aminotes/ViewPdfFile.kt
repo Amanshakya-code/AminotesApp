@@ -1,10 +1,13 @@
 package com.example.aminotes
 
+import android.Manifest
 import android.app.DownloadManager
 import android.app.ProgressDialog
 import android.content.Context
+import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.util.Log
@@ -64,21 +67,38 @@ class ViewPdfFile : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.download -> {
-                var request = DownloadManager.Request(
-                    Uri.parse(fileurl)
-                )
-                    .setTitle(filename)
-                    .setDescription(filename + "Downloading..")
-                    .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
-                    .setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, filename+".pdf")
-                    .setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI or DownloadManager.Request.NETWORK_MOBILE)
-
-                var dm = getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
-                mydownloadId = dm.enqueue(request)
+                checkPermissionForFile()
                 return true
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+    private fun checkPermissionForFile() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if ((checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED)
+            ) {
+                val permissionWrite = arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                requestPermissions(
+                    permissionWrite,
+                    1002
+                ) // GIVE AN INTEGER VALUE FOR PERMISSION_CODE_WRITE LIKE 1002
+            } else {
+                downLoadFile()
+            }
+        }
+    }
+    private fun downLoadFile(){
+        var request = DownloadManager.Request(
+            Uri.parse(fileurl)
+        )
+            .setTitle(filename)
+            .setDescription(filename + "Downloading..")
+            .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+            .setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, filename+".pdf")
+            .setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI or DownloadManager.Request.NETWORK_MOBILE)
+
+        var dm = getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+        mydownloadId = dm.enqueue(request)
     }
 
 }
