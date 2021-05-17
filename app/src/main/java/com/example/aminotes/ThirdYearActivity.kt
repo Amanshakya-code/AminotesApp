@@ -18,6 +18,7 @@ class ThirdYearActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_third_year)
 
+        list.add(subject("Data Communication and Computer Networks",R.color.blue1,"third"))
         list.add(subject("Working in Teams for Professional Excellence",R.color.blue1,"third"))
         list.add(subject("Discrete Mathematical Structure",R.color.blue2,"third"))
         list.add(subject("Analysis and Design of Algorithm",R.color.blue3,"third"))
