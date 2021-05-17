@@ -18,6 +18,7 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import kotlinx.android.synthetic.main.activity_view_pdf_file.*
 import java.net.URLEncoder
 
@@ -25,6 +26,7 @@ class ViewPdfFile : AppCompatActivity() {
     var mydownloadId :Long = 0
     var filename = ""
     var fileurl = ""
+    private var encodeUrl = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_pdf_file)
@@ -34,12 +36,11 @@ class ViewPdfFile : AppCompatActivity() {
          var progressDialog = ProgressDialog(this)
         progressDialog.setTitle(filename)
         progressDialog.setMessage("Opening.....!!")
-        Toast.makeText(this,"Reload again if takes time...",Toast.LENGTH_SHORT).show()
+        Toast.makeText(this,"Refresh Pdf if required...",Toast.LENGTH_SHORT).show()
         webView.settings.javaScriptEnabled = true
         webView.webViewClient = object : WebViewClient(){
             override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
                 super.onPageStarted(view, url, favicon)
-                webviewPb.visibility = View.GONE
                 progressDialog.show()
             }
 
@@ -48,15 +49,13 @@ class ViewPdfFile : AppCompatActivity() {
                 progressDialog.dismiss()
             }
         }
-
-        var encodeurl = "";
         try {
-            encodeurl = URLEncoder.encode(fileurl, "UTF-8")
+            encodeUrl = URLEncoder.encode(fileurl, "UTF-8")
         }
         catch (e: Exception){
 
         }
-        webView.loadUrl("http://docs.google.com/gview?embedded=true&url=" + encodeurl)
+        webView.loadUrl("https://docs.google.com/gview?embedded=true&url=" + encodeUrl)
     }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         var inflater = menuInflater
@@ -68,6 +67,10 @@ class ViewPdfFile : AppCompatActivity() {
         when(item.itemId){
             R.id.download -> {
                 checkPermissionForFile()
+                return true
+            }
+            R.id.Refresh->{
+                webView.loadUrl("https://docs.google.com/gview?embedded=true&url=" + encodeUrl)
                 return true
             }
         }
