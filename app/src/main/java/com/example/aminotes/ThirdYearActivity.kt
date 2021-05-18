@@ -32,6 +32,7 @@ class ThirdYearActivity : AppCompatActivity() {
         list.add(subject("Computer Graphics",R.color.blue11,"third"))
         list.add(subject("Fundamentals of Machine Learning",R.color.blue12,"third"))
         list.add(subject("Programming & Employability Skills for Computer Engineering",R.color.blue13,"third"))
+        list.add(subject("Database Management System",R.color.blue13,"third"))
         list.add(subject("Software Engineering",R.color.blue14,"third"))
         list.add(subject("German (sem 5)",R.color.blue15,"third"))
         list.add(subject("German (sem 6)",R.color.blue16,"third"))

@@ -57,6 +57,7 @@ class PdfActivity : AppCompatActivity() {
                 .setLifecycleOwner(this)
             .setQuery(baseQuery,config, fileInfoModel::class.java)
             .build()
+
         Log.i("datare","$options")
         adapter = PdfAdapter(options)
         questionPaperRecyclerView.adapter = adapter
