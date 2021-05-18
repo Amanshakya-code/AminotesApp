@@ -113,7 +113,7 @@ class MainActivity : AppCompatActivity() {
             R.id.UploadFile->{
                 var dialogBuilder = AlertDialog.Builder(this)
                 dialogBuilder.setTitle("Help Us In Providing the Data")
-                dialogBuilder.setMessage("It would be great help ")
+                dialogBuilder.setMessage("It would be great help :)")
                     .setCancelable(true)
                     .setPositiveButton("Send Us",){dialogInterFace,which->
                         val url = "https://docs.google.com/forms/d/e/1FAIpQLSfTH-RAIVAFz_ilSWibY_hk3Ew5smWzKnOueZnochiWoylSBA/viewform?usp=sf_link"
