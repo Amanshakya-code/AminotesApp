@@ -63,13 +63,13 @@ class PdfActivity : AppCompatActivity() {
         questionPaperRecyclerView.adapter = adapter
 
     }
-    fun OpenNewTask(view: View) {
+    /*fun OpenNewTask(view: View) {
             var intent = Intent(this, UploadFile::class.java)
             intent.putExtra(SUBJECTNAME, subjectName)
             intent.putExtra(YEAR, year)
             intent.putExtra(NOTESORPAPER, str)
             startActivity(intent)
-        }
+        }*/
 
     override fun onStart() {
         super.onStart()

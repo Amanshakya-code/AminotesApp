@@ -12,13 +12,5 @@
         android:id="@+id/questionPaperRecyclerView"
         tools:listitem="@layout/single_pdf_item"
         />
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_margin="32dp"
-        android:onClick="OpenNewTask"
-        android:id="@+id/floatingActionButton"
-        android:src="@drawable/ic_baseline_add_24" />
+
 </RelativeLayout>
